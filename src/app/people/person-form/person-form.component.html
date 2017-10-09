@@ -46,7 +46,7 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">date_range</i>
         <input id="birth" materialize="pickadate" type="date" class="datepicker"
-              [value]="person.birth | date:'dd/MM/yyyy'"
+              [value]="person.birth | date:'yyyy-MM-dd'"
               (input)="person.birth=parseDate($event.target.value)"
               formControlName="birth"/>
         <label for="birth" [class.active]="person.birth">Nascmento</label>

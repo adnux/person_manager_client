@@ -56,6 +56,9 @@ export class PeopleComponent implements OnInit {
     if (search.email) {
       query = query + '&email=' + search.email;
     }
+    if (search.birth) {
+      query = query + '&birth=' + search.birth;
+    }
 
     this.peopleService.getPeople(query)
       .subscribe(data => {
@@ -69,16 +72,17 @@ export class PeopleComponent implements OnInit {
 
   deletePerson(person) {
     if (confirm("Are you sure you want to delete " + person.name + "?")) {
+
       var index = this.people.indexOf(person);
       this.people.splice(index, 1);
 
-      this.peopleService.deletePerson(person.id)
-        .subscribe(null,
-        err => {
-          alert("Could not delete person.");
-          // Revert the view back to its original state
-          this.people.splice(index, 0, person);
-        });
+      this.peopleService.deletePerson(person.id);
+        // .subscribe(null,
+        // err => {
+        //   alert("Could not delete person.");
+        //   // Revert the view back to its original state
+        //   this.people.splice(index, 0, person);
+        // });
     }
   }
 

@@ -13,17 +13,25 @@ import { PagerService } from './service/pager.service';
 export class Pager implements OnInit {
   constructor(private http: Http, private pagerService: PagerService) { }
 
+  totalItemsInternal: number = 0;
+  currentPageInternal: number = 1;
 
   @Input() set totalItems(totalItems: number) {
     if (totalItems) {
-      console.log('totalItems---' + totalItems);
+      console.log('totalItems->' + totalItems);
       this.totalItemsInternal = totalItems;
+      this.setPage(1);
+    }
+  }
+  @Input() set currentPage(currentPage: number) {
+    if (currentPage) {
+      console.log('currentPage->' + currentPage);
+      this.currentPageInternal = currentPage;
       this.setPage(1);
     }
   }
   // array of all items to be paged
   // private allItems: any[];
-  totalItemsInternal: number = 0;
 
   // pager object
   pager: any = {};
@@ -43,7 +51,7 @@ export class Pager implements OnInit {
 
     console.log('page otra');
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.totalItemsInternal, page);
+    this.pager = this.pagerService.getPager(this.totalItemsInternal, this.currentPageInternal);
 
     // get current page of items
     // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);

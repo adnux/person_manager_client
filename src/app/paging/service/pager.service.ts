@@ -1,5 +1,5 @@
 export class PagerService {
-  getPager = (totalItems: number, currentPage: number = 1, pageSize: number = 10) => {
+  getPager = (totalItems: number, currentPage: number = 1, pageSize: number = 5) => {
     // calculate total pages
     console.log('totalItems:' + totalItems);
     console.log('currentPage:' + currentPage);

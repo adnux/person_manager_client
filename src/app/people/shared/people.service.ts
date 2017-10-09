@@ -40,8 +40,7 @@ export class PeopleService {
   }
 
   deletePerson(id) {
-    return this.http.delete(this.getPersonUrl(id))
-      .map(res => res.json());
+    return this.http.delete(this.getPersonUrl(id));
   }
 
   private getPersonUrl(id) {

@@ -1,34 +1,36 @@
 <form materialize class="col s12" [formGroup]="form" (ngSubmit)="search()">
   <div class="row">
     <div class="row">
-      <div class="input-field col l4">
+      <div class="input-field col l3">
         <i class="material-icons prefix">account_circle</i>
-        <input id="name" type="text" class="validate"
-                [(ngModel)]="name" formControlName="name"
-        >
+        <input id="name" type="text" class="validate" [(ngModel)]="name" formControlName="name">
         <label for="name" [class.active]="name">
           Nome
         </label>
       </div>
 
-      <div class="input-field col l4">
+      <div class="input-field col l3">
         <i class="material-icons prefix">fingerprint</i>
-        <input id="document" type="text" class="validate"
-                [(ngModel)]="document" formControlName="document"
-        >
+        <input id="document" type="text" class="validate" [(ngModel)]="document" formControlName="document">
         <label for="document" [class.active]="document">
           CPF
         </label>
       </div>
 
-      <div class="input-field col l4">
+      <div class="input-field col l3">
         <i class="material-icons prefix">email</i>
-        <input id="email" type="text" class="validate"
-                [(ngModel)]="email" formControlName="email"
-        >
+        <input id="email" type="text" class="validate" [(ngModel)]="email" formControlName="email">
         <label for="email" [class.active]="email">
-          E-Mail
-        </label>
+            E-Mail
+          </label>
+      </div>
+      <div class="input-field col l3">
+        <i class="material-icons prefix">date_range</i>
+        <input id="birth" type="text" class="validate" [value]="birth | date:'yyyy-MM-dd'" (input)="birth=parseDate($event.target.value)"
+          formControlName="birth">
+        <label for="birth" [class.active]="birth">
+            Nascimento
+          </label>
       </div>
     </div>
 
@@ -54,7 +56,7 @@
       <td>{{person.name}}</td>
       <td>{{person.document}}</td>
       <td>{{person.email}}</td>
-      <td>{{person.birth | date:'d/M/y'}}</td>
+      <td>{{person.birth | date:'y-M-d'}}</td>
       <td>
         <a [routerLink]="['/people', person.id]">
           <i class="material-icons">mode_edit</i>
@@ -72,7 +74,7 @@
   Displaying {{ people.length }} people.
 </p>
 <p>
-  <pager [totalItems]="totalElements"></pager>
+  <pager [totalItems]="totalElements" [currentPage]="pageNumber"></pager>
 </p>
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
