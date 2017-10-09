@@ -1,0 +1,60 @@
+<h5>{{ title }}</h5>
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="name" type="text" class="validate"
+               [(ngModel)]="person.name" formControlName="name"
+               [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid"
+        >
+        <label for="name"
+               [class.active]="person.name"
+               data-error="Name is required and needs to contain at least 3 chars">
+          Nome
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="document" type="text" class="validate"
+               [(ngModel)]="person.document" formControlName="document"
+               [class.invalid]="form.controls['document'].touched && !form.controls['document'].valid"
+        >
+        <label for="document"
+               [class.active]="person.document"
+               data-error="Name is required and needs to contain at least 3 chars">
+          CPF
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input id="email" type="email" class="validate"
+               [(ngModel)]="person.email" formControlName="email"
+               [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">
+        <label for="email"
+               [class.active]="person.email"
+               data-error="Invalid Email">
+          Email
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">date_range</i>
+        <input id="birth" type="text" class="validate"
+              [value]="person.birth | date:'dd/MM/yyyy'"
+              (input)="person.birth=parseDate($event.target.value)"
+              formControlName="birth">
+        <label for="birth" [class.active]="person.birth">Nascmento</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit"
+            [disabled]="!form.valid">
+      Submit<i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
