@@ -7,6 +7,7 @@ import { MaterializeDirective } from "angular2-materialize";
 import { Person } from '../shared/person';
 import { PeopleService } from '../shared/people.service';
 import { BasicValidators } from '../../shared/basic-validators';
+import { ValidationService } from '../../control/validation.service';
 
 @Component({
   selector: 'app-person-form',
@@ -14,7 +15,6 @@ import { BasicValidators } from '../../shared/basic-validators';
   styleUrls: ['./person-form.component.css']
 })
 export class PersonFormComponent implements OnInit {
-
 
   // public myDatePickerOptions: IMyDpOptions = {
   //   // other options...
@@ -67,7 +67,7 @@ export class PersonFormComponent implements OnInit {
         .subscribe(
         person => {
           this.person = person;
-          console.log('person.birth' + JSON.stringify(person.birth));
+          // console.log('person.birth' + JSON.stringify(person.birth));
           // this.setDate(person.birth);
         }, response => {
           if (response.status == 404) {
@@ -82,8 +82,8 @@ export class PersonFormComponent implements OnInit {
     var result,
       personValue = this.form.value;
 
-    console.log('personValue' + JSON.stringify(personValue));
-    console.log('personValue.id' + personValue.id);
+    // console.log('personValue' + JSON.stringify(personValue));
+    // console.log('personValue.id' + personValue.id);
     if (personValue.id) {
       result = this.peopleService.updatePerson(personValue);
     } else {

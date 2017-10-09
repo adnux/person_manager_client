@@ -18,7 +18,7 @@ export class PeopleService {
   constructor(private http: Http) { }
 
   getPeople(query: string) {
-    console.log('iniciando:' + this.url);
+    // console.log('iniciando:' + this.url);
     return this.http.get(this.url + query)
       .map(res => res.json());
     // .map(data => data.content);
@@ -29,14 +29,18 @@ export class PeopleService {
       .map(res => res.json());
   }
 
-  addPerson(user) {
-    return this.http.post(this.url, JSON.stringify(user), this.options)
-      .map(res => res.json());
+  addPerson(person) {
+    return this.http.post(this.url, JSON.stringify(person), this.options)
+    .map(res => {
+      return res.json();
+    });
   }
 
-  updatePerson(user) {
-    return this.http.put(this.getPersonUrl(user.id), JSON.stringify(user), this.options)
-      .map(res => res.json());
+  updatePerson(person) {
+    return this.http.put(this.getPersonUrl(person.id), JSON.stringify(person), this.options)
+      .map(res => {
+        return res.json();
+      });
   }
 
   deletePerson(id) {

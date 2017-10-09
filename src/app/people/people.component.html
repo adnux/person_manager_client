@@ -1,30 +1,28 @@
 <form materialize class="col s12" [formGroup]="form" (ngSubmit)="search()">
   <div class="row">
     <div class="row">
-      <div class="input-field col l3">
+      <div class="input-field col l2 s12">
         <i class="material-icons prefix">account_circle</i>
         <input id="name" type="text" class="validate" [(ngModel)]="name" formControlName="name">
         <label for="name" [class.active]="name">
           Nome
         </label>
       </div>
-
-      <div class="input-field col l3">
-        <i class="material-icons prefix">fingerprint</i>
+      <div class="input-field col l2 s12">
+        <i class="material-icons prefix">payment</i>
         <input id="document" type="text" class="validate" [(ngModel)]="document" formControlName="document">
         <label for="document" [class.active]="document">
           CPF
         </label>
       </div>
-
-      <div class="input-field col l3">
+      <div class="input-field col l2 s12">
         <i class="material-icons prefix">email</i>
         <input id="email" type="text" class="validate" [(ngModel)]="email" formControlName="email">
         <label for="email" [class.active]="email">
             E-Mail
           </label>
       </div>
-      <div class="input-field col l3">
+      <div class="input-field col l2 s12">
         <i class="material-icons prefix">date_range</i>
         <input id="birth" type="text" class="validate" [value]="birth | date:'yyyy-MM-dd'" (input)="birth=parseDate($event.target.value)"
           formControlName="birth">
@@ -32,44 +30,52 @@
             Nascimento
           </label>
       </div>
+      <div class="input-field col l2">
+        <button class="btn waves-effect waves-light" type="submit">
+          Buscar<i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="input-field col l2">
+        <button class="btn waves-effect waves-light" (click)="form.reset()">
+          Limpar<i class="material-icons right">refresh</i>
+        </button>
+      </div>
     </div>
-
-    <button class="btn waves-effect waves-light" type="submit">
-    Buscar<i class="material-icons right">send</i>
-    </button>
   </div>
 </form>
-<table>
-  <thead>
-    <tr>
-      <th data-field="name">Nome</th>
-      <th data-field="name">CPF</th>
-      <th data-field="name">Email</th>
-      <th data-field="name">Nascimeno</th>
-      <th data-field="name">Editar</th>
-      <th data-field="name">Deletar</th>
-    </tr>
-  </thead>
+<div class="col s12">
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th data-field="name">Nome</th>
+        <th data-field="name">CPF</th>
+        <th data-field="name">Email</th>
+        <th data-field="name">Nascimeno</th>
+        <th data-field="name">Editar</th>
+        <th data-field="name">Deletar</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let person of people">
-      <td>{{person.name}}</td>
-      <td>{{person.document}}</td>
-      <td>{{person.email}}</td>
-      <td>{{person.birth | date:'y-M-d'}}</td>
-      <td>
-        <a [routerLink]="['/people', person.id]">
-          <i class="material-icons">mode_edit</i>
-        </a>
-      </td>
-      <td>
-        <a (click)="deletePerson(person)" href="">
-          <i class="material-icons">delete</i>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr *ngFor="let person of people">
+        <td>{{person.name}}</td>
+        <td>{{person.document}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birth | date:'y-M-d'}}</td>
+        <td>
+          <a [routerLink]="['/people', person.id]">
+              <i class="material-icons">mode_edit</i>
+            </a>
+        </td>
+        <td>
+          <a (click)="deletePerson(person)" href="">
+              <i class="material-icons">delete</i>
+            </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <p>
   Displaying {{ people.length }} people.
 </p>
@@ -79,6 +85,6 @@
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
   <a class="btn-floating btn-large waves-effect waves-light green" routerLink="/people/new">
-    <i class="material-icons">add</i>
+    <i class="material-icons">person_add</i>
   </a>
 </div>

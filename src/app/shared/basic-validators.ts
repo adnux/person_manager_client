@@ -24,4 +24,15 @@ export class BasicValidators {
       }
     };
   }
+
+  static date(control: FormControl) {
+
+    let DATRE_REGEXP = /\d{4}-\d{2}-\d{2}/;
+
+    return DATRE_REGEXP.test(control.value) ? null : {
+      validateDate: {
+        valid: false
+      }
+    };
+  }
 }

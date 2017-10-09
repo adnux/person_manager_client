@@ -18,14 +18,14 @@ export class Pager implements OnInit {
 
   @Input() set totalItems(totalItems: number) {
     if (totalItems) {
-      console.log('totalItems->' + totalItems);
+      // console.log('totalItems->' + totalItems);
       this.totalItemsInternal = totalItems;
       this.setPage(1);
     }
   }
   @Input() set currentPage(currentPage: number) {
     if (currentPage) {
-      console.log('currentPage->' + currentPage);
+      // console.log('currentPage->' + currentPage);
       this.currentPageInternal = currentPage;
       this.setPage(1);
     }
@@ -45,11 +45,11 @@ export class Pager implements OnInit {
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
-      console.log('page coisa');
+      // console.log('page coisa');
       return;
     }
 
-    console.log('page otra');
+    // console.log('page otra');
     // get pager object from service
     this.pager = this.pagerService.getPager(this.totalItemsInternal, this.currentPageInternal);
 

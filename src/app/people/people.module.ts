@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material';
 import { PeopleComponent } from './people.component';
 import { PeopleService } from './shared/people.service';
 import { PersonFormComponent } from './person-form/person-form.component';
+import { ControlMessagesComponent } from '../control/control-message.component';
 
 import { PagerModule } from '../paging/pager.module';
 
@@ -26,7 +27,8 @@ import { PagerModule } from '../paging/pager.module';
   ],
   declarations: [
     PeopleComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    ControlMessagesComponent
   ],
   exports: [
     PeopleComponent

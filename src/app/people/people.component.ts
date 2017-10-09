@@ -43,7 +43,7 @@ export class PeopleComponent implements OnInit {
 
   search() {
     const search = this.form.value;
-    console.log('search:' + JSON.stringify(search));
+    // console.log('search:' + JSON.stringify(search));
 
     let query = '?size=5';
 
