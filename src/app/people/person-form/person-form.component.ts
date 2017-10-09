@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDatepicker } from '@angular/material';
+import { MaterializeDirective } from "angular2-materialize";
 
 import { Person } from '../shared/person';
 import { PeopleService } from '../shared/people.service';
@@ -45,7 +46,7 @@ export class PersonFormComponent implements OnInit {
         Validators.required,
         BasicValidators.email
       ]],
-      birth: [null, [
+      birth: [new Date(), [
         Validators.required
       ]]
     });

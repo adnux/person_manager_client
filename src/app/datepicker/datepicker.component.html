@@ -1,0 +1,7 @@
+<input #input id="{{id}}_input" type="text" class="has-input-icon" [(ngModel)]="value"
+(click)="onClickInput()" maxlength="10"
+(keydown)="onKeyDown($event)"
+[disabled]="disable"
+>
+<i class="fa fa-calendar input-icon" aria-hidden="true" (click)="onClickInput()"></i>
+<calendar #calendar [show]="showCalendar" [selectedDate]="getDateToCalendar()" (onSelectDate)="onSelectDate($event)"></calendar>

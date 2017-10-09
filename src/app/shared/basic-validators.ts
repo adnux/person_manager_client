@@ -18,8 +18,6 @@ export class BasicValidators {
 
     let CPF_REGEXP = /^[0-9]{11}$/;
 
-    console.log('CPF_REGEXP.test(control.value)' + CPF_REGEXP.test(control.value));
-
     return CPF_REGEXP.test(control.value) ? null : {
       validateCpf: {
         valid: false

@@ -1,7 +1,42 @@
-<p>
-  Displaying {{ people.length }} people.
-</p>
+<form materialize class="col s12" [formGroup]="form" (ngSubmit)="search()">
+  <div class="row">
+    <div class="row">
+      <div class="input-field col l4">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="name" type="text" class="validate"
+                [(ngModel)]="name" formControlName="name"
+        >
+        <label for="name" [class.active]="name">
+          Nome
+        </label>
+      </div>
 
+      <div class="input-field col l4">
+        <i class="material-icons prefix">fingerprint</i>
+        <input id="document" type="text" class="validate"
+                [(ngModel)]="document" formControlName="document"
+        >
+        <label for="document" [class.active]="document">
+          CPF
+        </label>
+      </div>
+
+      <div class="input-field col l4">
+        <i class="material-icons prefix">email</i>
+        <input id="email" type="text" class="validate"
+                [(ngModel)]="email" formControlName="email"
+        >
+        <label for="email" [class.active]="email">
+          E-Mail
+        </label>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit">
+    Buscar<i class="material-icons right">send</i>
+    </button>
+  </div>
+</form>
 <table>
   <thead>
     <tr>
@@ -33,6 +68,9 @@
     </tr>
   </tbody>
 </table>
+<p>
+  Displaying {{ people.length }} people.
+</p>
 <p>
   <pager [totalItems]="totalElements"></pager>
 </p>

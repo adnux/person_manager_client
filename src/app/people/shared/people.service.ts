@@ -17,9 +17,9 @@ export class PeopleService {
 
   constructor(private http: Http) { }
 
-  getPeople() {
+  getPeople(query: string) {
     console.log('iniciando:' + this.url);
-    return this.http.get(this.url + '?size=5')
+    return this.http.get(this.url + query)
       .map(res => res.json());
     // .map(data => data.content);
   }

@@ -1,0 +1,24 @@
+<div class="datepicker" [class.open]="show">
+	<div class="datepicker-header">
+		<div class="datepicker-header-year">
+			<em class="fa fa-chevron-left" (click)="prevYear()"></em>
+			<b class="year-number">{{year}}</b>
+			<em class="fa fa-chevron-right" (click)="nextYear()"></em>
+		</div>
+		<div class="datepicker-header-month">
+			<em class="fa fa-chevron-left" (click)="prevMonth()"></em>
+			<b class="month-name">{{locale.monthNames[month]}}</b>
+			<em class="fa fa-chevron-right" (click)="nextMonth()"></em>
+		</div>
+	</div>
+
+	<div class="datepicker-calendar">
+		<div class="datepicker-calendar-header">
+			<li class="item" *ngFor="let weekDay of locale.dayNames">{{weekDay}}</li>
+		</div>
+		<li *ngFor="let dayCalendar of days" (click)="selectDate(dayCalendar)" class="item"
+      [class.not-this-month]="!dayCalendar.isMonthOfSelectDate"
+			[class.selected]="dayCalendar.isSelectDate">
+			{{dayCalendar.day}}</li>
+	</div>
+</div>
