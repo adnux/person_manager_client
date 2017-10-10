@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { PeopleComponent } from './people.component';
-import {PersonFormComponent} from "./person-form/person-form.component";
+import {PersonFormComponent} from './person-form/person-form.component';
 
 const peopleRoutes: Routes = [
   { path: 'people', component: PeopleComponent, pathMatch: 'full' },

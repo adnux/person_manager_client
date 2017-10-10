@@ -10,11 +10,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { routing } from './app.routing';
-import { usersRouting } from "./users/users.routing";
-import { UsersModule } from "./users/users.module";
 
-import { peopleRouting } from "./people/people.routing";
-import { PeopleModule } from "./people/people.module";
+import { peopleRouting } from './people/people.routing';
+import { PeopleModule } from './people/people.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +26,6 @@ import { PeopleModule } from "./people/people.module";
     FormsModule,
     HttpModule,
     MaterializeModule,
-    UsersModule,
-    usersRouting,
     PeopleModule,
     peopleRouting,
     routing

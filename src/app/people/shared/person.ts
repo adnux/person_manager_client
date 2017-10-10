@@ -1,7 +1,7 @@
 export class Person {
-  id: string;
-  name: string;
-  document: string;
-  email: string;
-  birth: string;
+  public id: string;
+  public name: string;
+  public document: string;
+  public email: string;
+  public birth: string;
 }

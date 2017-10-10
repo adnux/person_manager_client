@@ -21,12 +21,12 @@ export class PersonFormComponent implements OnInit {
   //   dateFormat: 'dd/mm/yyyy',
   // };
 
-  form: FormGroup;
-  title: string;
-  person: Person = new Person();
+  public form: FormGroup;
+  public title: string;
+  public person: Person = new Person();
 
   constructor(
-    formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private peopleService: PeopleService
@@ -53,8 +53,8 @@ export class PersonFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    var id = this.route.params.subscribe(params => {
-      var id = params['id'];
+    this.route.params.subscribe(params => {
+      const id = params['id'];
 
       this.title = id ? 'Edit Person' : 'New Person';
 
@@ -79,8 +79,8 @@ export class PersonFormComponent implements OnInit {
   }
 
   save() {
-    var result,
-      personValue = this.form.value;
+    let result;
+    const personValue = this.form.value;
 
     // console.log('personValue' + JSON.stringify(personValue));
     // console.log('personValue.id' + personValue.id);
@@ -98,7 +98,7 @@ export class PersonFormComponent implements OnInit {
   setDate(birthDay: Date): void {
     // Set today date using the patchValue function
     if (birthDay) {
-      let date = birthDay;
+      const date = birthDay;
       this.form.patchValue({
         birth: {
           date: {

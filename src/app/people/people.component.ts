@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PeopleService } from "./shared/people.service";
-import { Person } from "./shared/person";
+import { PeopleService } from './shared/people.service';
+import { Person } from './shared/person';
 
 @Component({
   selector: 'app-people',
@@ -10,13 +10,13 @@ import { Person } from "./shared/person";
 })
 export class PeopleComponent implements OnInit {
 
-  private people: Person[] = [];
+  public people: Person[] = [];
   public pageSize: number = 0;
   public pageNumber: number = 1;
   public totalElements: number = 0;
   public totalPages: number = 0;
 
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(
     formBuilder: FormBuilder,
