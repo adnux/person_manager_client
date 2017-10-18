@@ -3,20 +3,20 @@
       <div class="text-center">
           <!-- pager -->
           <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-              <li [ngClass]="{disabled:pager.currentPage === 1}">
-                  <a (click)="setPage(1)">First</a>
+              <li [ngClass]="{disabled:pager.pageNumber === 1}">
+                  <a (click)="setPage(1)">Primeira</a>
               </li>
-              <li [ngClass]="{disabled:pager.currentPage === 1}">
-                  <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+              <li [ngClass]="{disabled:pager.pageNumber === 1}">
+                  <a (click)="setPage(pager.pageNumber - 1)">Anterior</a>
               </li>
-              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.pageNumber === page}">
                   <a (click)="setPage(page)">{{page}}</a>
               </li>
-              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                  <a (click)="setPage(pager.currentPage + 1)">Next</a>
+              <li [ngClass]="{disabled:pager.pageNumber === pager.totalElements}">
+                  <a (click)="setPage(pager.pageNumber + 1)">Próxima</a>
               </li>
-              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                  <a (click)="setPage(pager.totalPages)">Last</a>
+              <li [ngClass]="{disabled:pager.pageNumber === pager.totalElements}">
+                  <a (click)="setPage(pager.totalElements)">Última</a>
               </li>
           </ul>
       </div>

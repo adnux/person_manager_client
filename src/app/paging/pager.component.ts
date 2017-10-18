@@ -1,59 +1,68 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  SimpleChange
+} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/map';
 import { PagerService } from './service/pager.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'pager',
+  selector: 'app-pager',
   templateUrl: 'pager.component.html'
 })
 
-export class Pager implements OnInit {
-  constructor(private http: Http, private pagerService: PagerService) { }
+export class Pager implements OnInit, OnChanges {
 
-  totalItemsInternal: number = 0;
-  currentPageInternal: number = 1;
+  @Input() pageNumber: number; // the current page
+  @Input() totalElements: number; // how many total items there are in all pages
+  @Input() pageSize: number; // how many items we want to show per page
 
-  @Input() set totalItems(totalItems: number) {
-    if (totalItems) {
-      // console.log('totalItems->' + totalItems);
-      this.totalItemsInternal = totalItems;
-      this.setPage(1);
-    }
-  }
-  @Input() set currentPage(currentPage: number) {
-    if (currentPage) {
-      // console.log('currentPage->' + currentPage);
-      this.currentPageInternal = currentPage;
-      this.setPage(1);
-    }
-  }
-  // array of all items to be paged
-  // private allItems: any[];
+  @Output() goPage = new EventEmitter<number>();
 
   // pager object
   pager: any = {};
 
-  // paged items
-  // pagedItems: any[];
+  constructor(private http: Http, private pagerService: PagerService) { }
 
   ngOnInit() {
-    //this.setPage(1);
+    // console.log('starting pager')
+    // this.setPage(1);
   }
 
-  setPage(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
-      // console.log('page coisa');
+  ngOnChanges(changes: SimpleChanges) {
+    const pageNumber: SimpleChange = changes.pageNumber;
+    const pageSize: SimpleChange = changes.pageSize;
+    const totalElements: SimpleChange = changes.totalElements;
+    if (pageNumber) {
+      this.pageNumber = pageNumber.currentValue + 1;
+    }
+    if (pageSize) {
+      this.pageSize = pageSize.currentValue;
+    }
+    if (totalElements) {
+      this.totalElements = totalElements.currentValue;
+    }
+    // console.log('@new values=', this.totalElements, this.pageNumber, this.pageSize);
+    this.pager = this.pagerService.getPager(this.totalElements, this.pageNumber, this.pageSize);
+
+    // this._name = name.currentValue.toUpperCase();
+  }
+
+  setPage(pageNumber: number) {
+    if (!pageNumber || pageNumber < 1 || pageNumber > this.pager.totalPages) {
       return;
     }
-
-    // console.log('page otra');
+    this.pageNumber = pageNumber;
+    // console.log('@old values=', this.totalElements, this.pageNumber, this.pageSize);
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.totalItemsInternal, this.currentPageInternal);
-
-    // get current page of items
-    // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pager = this.pagerService.getPager(this.totalElements, this.pageNumber, this.pageSize);
+    this.goPage.emit(pageNumber);
   }
 }

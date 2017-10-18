@@ -47,7 +47,7 @@ export class ValidationService {
   static nameValidator(control) {
     // console.log('nameValidator', control.value);
     if (control.value) {
-      let NAME_REGEXP = /^[a-zA-Z]{3,150}$/;
+      const NAME_REGEXP = /^[a-zA-Z]{3,150}$/;
       if (control.value.match(NAME_REGEXP)) {
         return null;
       } else {
@@ -59,7 +59,7 @@ export class ValidationService {
   static cpfValidator(control) {
     // console.log('cpfValidator', control.value);
     if (control.value) {
-      let CPF_REGEXP = /^[0-9]{11}$/;
+      const CPF_REGEXP = /^[0-9]{11}$/;
       if (control.value.match(CPF_REGEXP)) {
         return null;
       } else {
