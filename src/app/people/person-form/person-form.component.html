@@ -45,11 +45,14 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">date_range</i>
-        <input id="birth" materialize="pickadate" type="date" class="datepicker"
-              [value]="person.birth | date:'yyyy-MM-dd'"
-              (input)="person.birth=parseDate($event.target.value)"
-              formControlName="birth"/>
-        <label for="birth" [class.active]="person.birth" data-error="Data de Nascimento inválida">Nascmento</label>
+        <input id="birth" matInput
+          placeholder="Nascimento"
+          [matDatepicker]="picker"
+          [(ngModel)]="person.birth"
+          formControlName="birth"
+          style="width:80%">
+        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </div>
     </div>
     <button class="btn waves-effect waves-light" type="submit"
