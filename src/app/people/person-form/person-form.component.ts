@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDatepicker } from '@angular/material';
-import { MaterializeDirective } from "angular2-materialize";
+// import { MaterializeDirective } from "angular2-materialize";
 
 import { Person } from '../shared/person';
 import { PeopleService } from '../shared/people.service';
 import { BasicValidators } from '../../shared/basic-validators';
-import { ValidationService } from '../../control/validation.service';
 
 @Component({
   selector: 'app-person-form',
@@ -70,7 +69,7 @@ export class PersonFormComponent implements OnInit {
           // console.log('person.birth' + JSON.stringify(person.birth));
           // this.setDate(person.birth);
         }, response => {
-          if (response.status == 404) {
+          if (response.status === 404) {
             this.router.navigate(['NotFound']);
           }
         });

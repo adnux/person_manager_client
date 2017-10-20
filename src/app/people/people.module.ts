@@ -4,14 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { DatePipe } from '@angular/common';
-import { MyDatePickerModule } from 'mydatepicker';
 import { MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
 
 import { PeopleComponent } from './people.component';
 import { PeopleService } from './shared/people.service';
 import { PersonFormComponent } from './person-form/person-form.component';
-import { ControlMessagesComponent } from '../control/control-message.component';
+// import { ControlMessagesComponent } from '../control/control-message.component';
 
 import { PagerModule } from '../paging/pager.module';
 
@@ -23,14 +22,14 @@ import { PagerModule } from '../paging/pager.module';
     RouterModule,
     HttpModule,
     PagerModule,
-    MyDatePickerModule,
+    // MyDatePickerModule,
     MatDatepickerModule,
     MatNativeDateModule
   ],
   declarations: [
     PeopleComponent,
     PersonFormComponent,
-    ControlMessagesComponent
+    // ControlMessagesComponent
   ],
   exports: [
     PeopleComponent

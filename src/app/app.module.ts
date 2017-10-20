@@ -25,10 +25,12 @@ import { PeopleModule } from './people/people.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterializeModule,
     PeopleModule,
     peopleRouting,
-    routing
+    routing,
+    MaterializeModule
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]
